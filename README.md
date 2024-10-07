@@ -4,19 +4,25 @@
 
 ## Tecnologias Utilizadas
 
--- **PHP**: Linguagem de programação principal.
--- **Composer**: Gerenciador de dependências para PHP.
--- **PHPUnit**: Framework para testes automatizados.
--- **HTML/CSS**: Para a interface do usuário.
--- **PHP Sessions**: Para gerenciamento de sessão do carrinho.
+- **PHP**: Linguagem de programação principal.
+- **Composer**: Gerenciador de dependências para PHP.
+- **PHPUnit**: Framework para testes automatizados.
+- **HTML/CSS**: Para a interface do usuário.
+- **PHP Sessions**: Para gerenciamento de sessão do carrinho.
 
 ## Clonando o Projeto
 Para clonar o repositório, execute o seguinte comando no seu terminal:
 
 ```bash
 
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+git clone https://github.com/DavidAmon19/PHP-Ecomerce.git
+
+```
+
+## Acesse seu repositorio
+
+```bash
+cd projeto-ecomerce
 
 ```
 
