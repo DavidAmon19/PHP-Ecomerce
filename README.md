@@ -19,7 +19,7 @@ git clone https://github.com/DavidAmon19/PHP-Ecomerce.git
 
 ```
 
-## Acesse seu repositorio
+## Acesse a pasta
 
 ```bash
 cd projeto-ecomerce
@@ -63,7 +63,7 @@ composer require --dev phpunit/phpunit
 
 ```
 
-- Os testes cobrem funcionalidades de carrinho de compras, cálculo de valores e criação de categorias.
+- Os testes cobrem funcionalidades de carrinho de compras e cálculo de valores.
 
 ## Estrutura de Diretórios
 
@@ -72,7 +72,6 @@ projeto-ecomerce/
 ├─ public/           # Arquivos principais da aplicação (index.php, produtos.php, resumo.php)
 ├─ src/              # Classes de domínio (Produto, Carrinho, Categoria)
 ├─ tests/            # Arquivos de testes (CarrinhoTest.php, CategoriaTest.php)
-├─ vendor/           # Dependências instaladas via Composer
 ├─ composer.json     # Configuração do Composer
 ├─ composer.lock     # Lockfile do Composer
 ├─ .gitignore        # Arquivos e pastas ignorados no repositório
