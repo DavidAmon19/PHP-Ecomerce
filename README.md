@@ -68,15 +68,36 @@ composer require --dev phpunit/phpunit
 ## Estrutura de Diretórios
 
 ```bash
-projeto-ecomerce/
-├─ public/           # Arquivos principais da aplicação (index.php, produtos.php, resumo.php)
-├─ src/              # Classes de domínio (Produto, Carrinho, Categoria)
-├─ tests/            # Arquivos de testes (CarrinhoTest.php, CategoriaTest.php)
-├─ composer.json     # Configuração do Composer
-├─ composer.lock     # Lockfile do Composer
-├─ .gitignore        # Arquivos e pastas ignorados no repositório
-├─ imagens/          # Imagens dos produtos
-└─ style.css         # Estilos da aplicação
+projeto-ecomerce
+├─ composer.json                 # Arquivo de configuração do Composer com dependências do projeto
+├─ composer.lock                 # Arquivo que bloqueia as versões instaladas das dependências
+├─ public/                       # Pasta pública contendo arquivos acessíveis via URL
+│  ├─ carrinho.php               # Página para visualizar e gerenciar o carrinho de compras
+│  ├─ imagens/                   # Pasta com imagens dos produtos
+│  │  ├─ geladeira-electrolux.jpg
+│  │  ├─ iphone-12.jpg
+│  │  ├─ laptop-dell.jpg
+│  │  └─ micro-ondas-panasonic.jpg
+│  ├─ index.php                  # Arquivo principal de entrada para a aplicação
+│  ├─ produtos.php               # Página para listar os produtos disponíveis para compra
+│  ├─ resumo.php                 # Página para visualizar o resumo final do pedido
+│  └─ style.css                  # Arquivo de estilos CSS para o layout da aplicação
+├─ routes.php                    # Arquivo de definição das rotas da aplicação
+├─ src/                          # Diretório contendo a lógica principal do projeto
+│  ├─ Carrinho.php               # Classe de gerenciamento de itens no carrinho de compras
+│  ├─ Categoria.php              # Classe que define a categoria de produtos e seu imposto
+│  ├─ Controller/                # Diretório com os controladores da aplicação
+│  │  ├─ CarrinhoController.php  # Controlador para o carrinho de compras
+│  │  ├─ ProdutoController.php   # Controlador para listagem e manipulação de produtos
+│  │  └─ ResumoController.php    # Controlador para exibição do resumo do pedido
+│  ├─ Produto.php                # Classe que define o produto e suas características
+│  ├─ Router.php                 # Classe responsável por roteamento de URLs e redirecionamento
+│  └─ Service/                   # Diretório com serviços específicos do projeto
+│     └─ CarrinhoService.php     # Serviço para cálculo de totais do carrinho
+└─ tests/                        # Diretório com os testes automatizados
+   ├─ CarrinhoTest.php           # Testes para a classe Carrinho
+   └─ CategoriaTest.php          # Testes para a classe Categoria
+
 ```
 
 ## Funcionalidades

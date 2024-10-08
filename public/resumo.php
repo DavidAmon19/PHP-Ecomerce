@@ -1,27 +1,3 @@
-<?php
-require_once '../vendor/autoload.php'; 
-use App\Carrinho;
-
-session_start();
-
-$carrinho = $_SESSION['carrinho'] ?? null;
-
-if (!isset($_SESSION['numero_pedido'])) {
-    $_SESSION['numero_pedido'] = rand(1000, 9999);
-}
-$numeroPedido = $_SESSION['numero_pedido'];
-
-$totais = $carrinho ? $carrinho->calcularTotais() : [
-    'total_bruto' => 0,
-    'total_impostos' => 0,
-    'total_liquido' => 0
-];
-
-$_SESSION['carrinho'] = new Carrinho();
-
-unset($_SESSION['numero_pedido']); 
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -34,16 +10,20 @@ unset($_SESSION['numero_pedido']);
 
 <body>
     <header class="content-header">
-        <span>&#x270C; PHP-COMERCE</span>
+        <span>&#x270C; PHP-COMMERCE</span>
         <nav class="content-menu">
-            <a href="produtos.php">Produtos</a>
-            <a href="index.php">Carrinho</a>
+            <a href="/produtos">Produtos</a>
+            <a href="/carrinho">Carrinho</a>
         </nav>
     </header>
     <div class="container">
-
+        <form action="/produtos">
+            <button type="submit" class="success-btn">
+                &#x21d0; Voltar as compras
+            </button>
+        </form>
+        <h1>Resumo do Pedido &#x2714;</h1>
         <div class="content-resumo">
-            <h1>Resumo do Pedido &#x2714;</h1>
             <p><strong>Número do Pedido:</strong> <?php echo $numeroPedido; ?></p>
             <p><strong>Total Bruto:</strong> R$ <?php echo number_format($totais['total_bruto'], 2, ',', '.'); ?></p>
             <p><strong>Impostos:</strong> R$ <?php echo number_format($totais['total_impostos'], 2, ',', '.'); ?></p>
