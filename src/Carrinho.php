@@ -2,7 +2,6 @@
 
 namespace App;
 
-
 class Carrinho
 {
     private array $itens = [];
@@ -35,28 +34,6 @@ class Carrinho
         if (isset($this->itens[$nomeProduto])) {
             $this->itens[$nomeProduto]['quantidade'] = $quantidade;
         }
-    }
-
-    public function calcularTotais(): array
-    {
-        $totalBruto = 0;
-        $totalImpostos = 0;
-
-        foreach ($this->itens as $item) {
-            $produto = $item['produto'];
-            $quantidade = $item['quantidade'];
-            $precoTotal = $produto->getPreco() * $quantidade;
-            $imposto = $precoTotal * ($produto->getCategoria()->getImposto() / 100);
-
-            $totalBruto += $precoTotal;
-            $totalImpostos += $imposto;
-        }
-
-        return [
-            'total_bruto' => $totalBruto,
-            'total_impostos' => $totalImpostos,
-            'total_liquido' => $totalBruto + $totalImpostos
-        ];
     }
 
     public function listarItens(): array

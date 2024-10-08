@@ -4,6 +4,7 @@ use PHPUnit\Framework\TestCase;
 use App\Carrinho;
 use App\Produto;
 use App\Categoria;
+use App\Service\CarrinhoService;
 
 class CarrinhoTest extends TestCase
 {
@@ -33,15 +34,15 @@ class CarrinhoTest extends TestCase
         $this->assertCount(0, $itens);
     }
 
-
     public function testCalcularTotais()
     {
         $categoria = new Categoria('Eletrodomésticos', 10);
         $produto = new Produto('Geladeira', 2500, $categoria, 'imagens/geladeira-electrolux.jpg');
         $carrinho = new Carrinho();
+        $carrinhoService = new CarrinhoService($carrinho);
 
         $carrinho->adicionarProduto($produto, 2);
-        $totais = $carrinho->calcularTotais();
+        $totais = $carrinhoService->calcularTotais();
 
         $this->assertEquals(5000, $totais['total_bruto']);
         $this->assertEquals(500, $totais['total_impostos']);
@@ -77,7 +78,8 @@ class CarrinhoTest extends TestCase
     public function testCarrinhoVazioCalcularTotais()
     {
         $carrinho = new Carrinho();
-        $totais = $carrinho->calcularTotais();
+        $carrinhoService = new CarrinhoService($carrinho);
+        $totais = $carrinhoService->calcularTotais();
 
         $this->assertEquals(0, $totais['total_bruto']);
         $this->assertEquals(0, $totais['total_impostos']);

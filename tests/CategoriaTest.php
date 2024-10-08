@@ -16,6 +16,6 @@ class CategoriaTest extends TestCase
     public function testCategoriaComImpostoInvalido()
     {
         $this->expectException(\InvalidArgumentException::class);
-        new Categoria('Notebooks', -5); 
+        new Categoria('Notebooks', -5);
     }
 }
