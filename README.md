@@ -9,6 +9,7 @@
 - **PHPUnit**: Framework para testes automatizados.
 - **HTML/CSS**: Para a interface do usuário.
 - **PHP Sessions**: Para gerenciamento de sessão do carrinho.
+- **Docker**: Para criar e gerenciar contêineres da aplicação.
 
 ## Clonando o Projeto
 Para clonar o repositório, execute o seguinte comando no seu terminal:
@@ -26,6 +27,59 @@ cd projeto-ecomerce
 
 ```
 
+## Configuração com Docker
+- Requisitos: Certifique-se de que você tem o Docker e o Docker Compose instalados.
+
+## 1. Build do contêiner
+- Após clonar o projeto, utilize o Docker Compose para construir o contêiner:
+
+```bash
+docker-compose build
+
+```
+
+## 2. Subir o contêiner
+- Para subir o contêiner e rodar a aplicação, execute:
+
+```bash
+docker-compose up
+
+```
+
+- A aplicação estará acessível em http://localhost:8080.
+
+
+## 3. Derrubar o contêiner
+- Para parar e remover os contêineres, você pode usar o comando:
+
+```bash
+docker-compose down
+
+```
+
+## Rodando os testes com o Docker
+- Acesse o contêiner em execução:
+
+```bash
+docker exec -it ecomerce-app bash
+
+```
+
+- Rode os testes com o PHPUnit dentro do contêiner:
+
+```bash
+./vendor/bin/phpunit --testdox tests/
+
+```
+
+## Rodando sem o Docker
+
+- caso você prefira rodar o projeto sem o Docker, você pode usar o servidor embutido do PHP.
+
+```bash
+php -S localhost:8000 -t public
+
+```
 
 ## Instalação das Dependências
 - Após clonar o projeto, é necessário instalar as dependências via Composer:
@@ -35,68 +89,35 @@ composer install
 
 ```
 
-## Como Rodar o Projeto
-
-- Para rodar o projeto, você pode usar o servidor embutido do PHP:
-
-```bash
-php -S localhost:8000 -t public
-
-```
-
-## Em seguida, abra o navegador e acesse http://localhost:8000.
-
-## Rodando os Testes
-- Os testes foram desenvolvidos utilizando o PHPUnit. Para executá-los, siga as instruções abaixo:
-
-- Certifique-se de que o PHPUnit está instalado. Caso contrário, instale-o via Composer:
-
-```bash
-composer require --dev phpunit/phpunit
-
-```
-
-## Execute os testes com o seguinte comando:
-
-```bash
-./vendor/bin/phpunit --testdox tests/
-
-```
-
-- Os testes cobrem funcionalidades de carrinho de compras e cálculo de valores.
 
 ## Estrutura de Diretórios
 
 ```bash
 projeto-ecomerce
-├─ composer.json                 # Arquivo de configuração do Composer com dependências do projeto
-├─ composer.lock                 # Arquivo que bloqueia as versões instaladas das dependências
-├─ public/                       # Pasta pública contendo arquivos acessíveis via URL
-│  ├─ carrinho.php               # Página para visualizar e gerenciar o carrinho de compras
-│  ├─ imagens/                   # Pasta com imagens dos produtos
-│  │  ├─ geladeira-electrolux.jpg
-│  │  ├─ iphone-12.jpg
-│  │  ├─ laptop-dell.jpg
-│  │  └─ micro-ondas-panasonic.jpg
-│  ├─ index.php                  # Arquivo principal de entrada para a aplicação
-│  ├─ produtos.php               # Página para listar os produtos disponíveis para compra
-│  ├─ resumo.php                 # Página para visualizar o resumo final do pedido
-│  └─ style.css                  # Arquivo de estilos CSS para o layout da aplicação
-├─ routes.php                    # Arquivo de definição das rotas da aplicação
-├─ src/                          # Diretório contendo a lógica principal do projeto
-│  ├─ Carrinho.php               # Classe de gerenciamento de itens no carrinho de compras
-│  ├─ Categoria.php              # Classe que define a categoria de produtos e seu imposto
-│  ├─ Controller/                # Diretório com os controladores da aplicação
-│  │  ├─ CarrinhoController.php  # Controlador para o carrinho de compras
-│  │  ├─ ProdutoController.php   # Controlador para listagem e manipulação de produtos
-│  │  └─ ResumoController.php    # Controlador para exibição do resumo do pedido
-│  ├─ Produto.php                # Classe que define o produto e suas características
-│  ├─ Router.php                 # Classe responsável por roteamento de URLs e redirecionamento
-│  └─ Service/                   # Diretório com serviços específicos do projeto
-│     └─ CarrinhoService.php     # Serviço para cálculo de totais do carrinho
-└─ tests/                        # Diretório com os testes automatizados
-   ├─ CarrinhoTest.php           # Testes para a classe Carrinho
-   └─ CategoriaTest.php          # Testes para a classe Categoria
+├─ .gitattributes                 
+├─ .gitignore                     
+├─ .htaccess                      
+├─ apache.conf                    
+├─ composer.json                  
+├─ composer.lock                  
+├─ docker-compose.yml             
+├─ Dockerfile                     
+├─ public/                       
+│  ├─ carrinho.php               
+│  ├─ imagens/                  
+│  ├─ index.php                  
+│  ├─ produtos.php               
+│  ├─ resumo.php                 
+│  └─ style.css                  
+├─ routes.php                    
+├─ src/                          
+│  ├─ Carrinho.php               
+│  ├─ Categoria.php              
+│  ├─ Controller/                
+│  ├─ Produto.php                
+│  ├─ Router.php                 
+│  └─ Service/                   
+└─ tests/                        
 
 ```
 
